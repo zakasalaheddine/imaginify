@@ -1,12 +1,16 @@
+import MobileNav from '@/components/shared/mobile-nav'
+import Sidebar from '@/components/shared/sidebar'
 import { cn } from '@/lib/utils'
-import { PropsWithChildren } from 'react'
 
 export default function RootLayout({
-  children,
-  className
-}: PropsWithChildren<HTMLDivElement>) {
+  children
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <main className={cn('root', className)}>
+    <main className={cn('root')}>
+      <Sidebar />
+      <MobileNav />
       <div className="root-container">
         <div className="wrapper">{children}</div>
       </div>
