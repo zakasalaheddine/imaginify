@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs'
+import { auth, currentUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,7 +10,7 @@ import { getImageSize } from '@/lib/utils'
 import { DeleteConfirmation } from '@/components/shared/delete-confirmation'
 
 const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
-  const { userId } = auth()
+  const user = await currentUser()
 
   const image = await getImageById(id)
 
@@ -83,7 +83,7 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
           />
         </div>
 
-        {userId === image.author.clerkId && (
+        {user && user.id === image.author.clerkId && (
           <div className="mt-4 space-y-4">
             <Button asChild type="button" className="submit-button capitalize">
               <Link href={`/transformations/${image._id}/update`}>

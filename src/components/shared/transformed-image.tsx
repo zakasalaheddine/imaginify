@@ -60,7 +60,7 @@ export default function TransformedImage({
             onError={() => {
               debounce(() => {
                 setIsTransforming && setIsTransforming(false)
-              }, 8000)
+              }, 8000)()
             }}
             {...transformationConfig}
           />
@@ -72,6 +72,7 @@ export default function TransformedImage({
                 height={50}
                 alt="Transforming..."
               />
+              <p className="text-white/80">Please wait...</p>
             </div>
           )}
         </div>

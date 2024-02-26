@@ -211,7 +211,7 @@ export default function TransformationForm({
                 onValueChange={(value) => {
                   onSelectFieldHandler(value, field.onChange)
                 }}
-                defaultValue={field.value}
+                value={field.value}
               >
                 <FormControl>
                   <SelectTrigger className="select-field">
